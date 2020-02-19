@@ -1,0 +1,163 @@
+BASIC LINUX COMMANDS -
+
+1) cd "path" - used for changing directory.
+For example - We are at the root directory.
+~ Enter the Desktop directory:
+~ cd Desktop ~ Desktop
+
+->Turn back by one directory:
+
+~ Desktop cd ..
+~
+OR
+
+~Desktop cd -
+~
+
+-> Move to the root directory.If u are a user it is home/user.
+
+~Dir_name1/Dirname_2 cd ~
+~
+
+2) ls - lists all the non-hidden directories and files existing in the current directory.
+
+-> ls -R - lists all the directories and subdirectories upto the file level in the current directory.
+
+-> ls -a - lists hidden files as well.Hidden files need permissions granted to be accessible and have
+           names starting with the period symbol ,i.e, .
+
+-> ls -l - displays permissions allowed for the files in the current directory.
+
+          for example -
+          -rwxrw-r-- - This code can be decoded as:
+
+           1. The first - indicates the we have selected a file.For a directory it would have been d.
+           2. The owner can read(r), write(w) and execute(x) the current file.
+           3. The user group can read, write but not execute the current file.
+           4. The world can only read the file.
+
+3) cat>"filename" -  creates a file in the current directory with name as "filename" and opens it in write mode.
+
+-> cat "filename" - displays the content of the file.
+
+-> cat "filename1" "filename2">"filename3" - combines the contents of filename1 and filename2 into filename3.
+
+
+4) sudo - this command is append before any command to give the current user all the security privileges as the
+          root user.
+
+5) rm "filename" or path/filename - deletes a file.
+
+-> rmdirc - deletes a directory.
+
+6) history - Gives a list of all past commands typed in the current terminal session.
+
+7) apt-get - command used to install and delete packages.
+
+8) chmod - chmod stands for change mode command.It is used to grant/change access permissions of a file.
+
+           for example -
+
+           ~ ls -l
+
+           ~ -rw-r--r--  1 sbhatnagar sbhatnagar     184 Jan  2 09:04  devop.txt
+
+           ~ chmod u+x devop.txt|chmod g+w devop.txt
+
+           ~ ls -l devop.txt
+
+           ~ -rwxrw-r-- 1 sbhatnagar sbhatnagar 184 Jan  2 09:04 devop.txt
+
+
+The symbolic representation of permission types is:
+
+u - user/owner
+g - user group
+o - others/world
+a - all
+
+Permission manipulating operators -
+
++ : adds following permissions.
+- : removes follwing permissions.
+= : sets following permissions.
+
+9) pipe(|) - It is used to run multiple commands at once by passing the filtered O/P of the one command to the successor command.
+
+10) grep - used to search for a string in a file.The syntax of the grep command/filter is:
+
+            grep [options] "pattern" filename
+
+        for example -  cat error.php | grep -n abstract
+
+11) find - find command provides the utility of walking through a file hierarchy.It can be used to seach files and directories on the basis 
+           of name, creation date, modification date, permissions,etc.
+
+           The syntax is:
+
+           find [where to start searching from] [expression determines what to find][options][what to find]
+
+for ex-
+~ tree /home/sbhatnagar/Desktop/check
+/home/sbhatnagar/Desktop/check
+├── newfile.txt
+└── test cases
+~ find /home/sbhatnagar/Desktop/check/ -name newfile.txt
+/home/sbhatnagar/Desktop/check/newfile.txt
+
+12) tree - tree command generates a graphical representation of the file hierarchy in a directory specified.
+           Needs to be installed with : sudo apt-get install tree.
+for ex-
+~ tree /home/sbhatnagar/Desktop/check
+/home/sbhatnagar/Desktop/check
+├── newfile.txt
+└── test cases
+
+13) mv - mv command can be used to implement two basic functions:
+         i) rename a file from source to destination.
+         ii) physically moves a file from source to different directory.
+
+The syntax of mv command in linux is:
+
+mv [options] source destination.
+
+Possible values of source and destination are:
+
+Source    |  Destination|  Action
+
+file      |  file       | i)if dest. file exists,will overwrite and delete the source file. (rename with dest.filename)
+                          ii) if dest. file does not exist,creates one and copies the content of source and delete source.(rename)
+
+file      |  folder/dir |  cut & paste
+
+folder/dir|  folder/dir |  cut & paste
+
+14) chown - used to change the ownership of a filesystem object.By default the owner of a filesystem object is the one which created it.
+
+    a) If we wish to change the user ownership of a filesystem object.The command is as:
+
+          sudo chown "user_owner_name" filename
+
+    b) If we wish to change the user ownership and group ownership as well of a filesystem object.The command is:
+
+        sudo chown "user_owner_name:group_owner_name" filename
+
+    c) If we wish to change only the group owner,use the command:
+
+        sudo chgrp "group_name" filename
+
+15) touch - This command is used to fulfill two purposes:
+
+            i) update the timestamp of an existing file.
+
+            ii) create an empty file that is perhaps required to exist for a process to continue.
+
+16) groups - Lists all the groups the current user belongs to.
+
+17) tar - this command is used to untar (unzip) files that are compressed using the tar or tar.gz compression format.
+
+          The syntax is as:
+
+          tar -C "destination_dir" -zxvf "source_tar_file"
+
+          If the destination directory is current directory,then -C switch can be omitted.
